@@ -45,9 +45,9 @@ RUN composer run-script post-autoload-dump
 # 10. (Optional) Build frontend assets
 # RUN npm install && npm run build
 
-# 11. Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage
-
+# 11. # Set correct permissions for storage and cache
+      RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+       && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 EXPOSE 80
 
 CMD ["apache2-foreground"]
