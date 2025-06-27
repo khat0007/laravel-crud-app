@@ -33,10 +33,11 @@ COPY . .
 
 # 8. Install Node.js and npm (for Laravel Mix or npm commands)
 RUN apt-get update && apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 # 9. Run post-install scripts
 RUN composer run-script post-autoload-dump
